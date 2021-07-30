@@ -18,15 +18,17 @@ public class UserViewModel extends AndroidViewModel {
 
     private UserRepository mUserRepository;
     private LiveData<User> mUser;
-    private final String userName = "user-leaf";
+    private final String userId = "user-leaf";
 //    private final String userName = "MichaelYe";
 
     public UserViewModel(@NonNull @NotNull Application application) {
         super(application);
         UserDatabase database = MyApplication.getUserDatabase();
+        // UserDao用于访问数据库中的User表
         UserDao userDao = database.userDao();
+        // 通过repository获取数据，不管repository是从数据库获取的还是从网络获取的。
         mUserRepository = new UserRepository(userDao, MyApplication.getApi());
-        mUser = mUserRepository.getUser(userName);
+        mUser = mUserRepository.getUser(userId);
     }
 
     public LiveData<User> getUser() {
@@ -34,6 +36,6 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     public void refresh() {
-        mUserRepository.refresh(userName);
+        mUserRepository.refresh(userId);
     }
 }

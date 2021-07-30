@@ -13,7 +13,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserRepository {
+    // 一个是访问数据库的User表
     private UserDao mUserDao;
+    // 一个是请求网络数据
     private Api mApi;
 
     public UserRepository(UserDao userDao, Api api) {
@@ -26,8 +28,8 @@ public class UserRepository {
         return mUserDao.getUserByLoginName(name);
     }
 
-    public void refresh(String userName) {
-        mApi.getUser(userName).enqueue(new Callback<User>() {
+    public void refresh(String userId) {
+        mApi.getUser(userId).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();

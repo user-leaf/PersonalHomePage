@@ -1,9 +1,5 @@
 package com.sesame.personalhomepage.api;
 
-import org.jetbrains.annotations.NotNull;
-
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,13 +9,8 @@ public class RetrofitClient {
     private Retrofit retrofit;
 
     public RetrofitClient() {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
-
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
                 .build();
     }
 
@@ -30,7 +21,7 @@ public class RetrofitClient {
         return retrofitClient;
     }
 
-    public Api getApi(){
+    public Api getApi() {
         return retrofit.create(Api.class);
     }
 }

@@ -37,6 +37,16 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:text="name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{@string/location(user.location)}"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:text="location" />
+
         </LinearLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
