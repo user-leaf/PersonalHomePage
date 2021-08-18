@@ -28,3 +28,4 @@ Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, DATABA
 `Repository`那个地方的实现，逻辑是怎样的。// 一方面从数据库查询数据；一方面从网络请求数据并存入数据库。
 
 `DataBinding`中，location:beijing是怎么实现文字与变量字段共同存在的，就是，怎么添加hint的。// 看strings.xml
+
