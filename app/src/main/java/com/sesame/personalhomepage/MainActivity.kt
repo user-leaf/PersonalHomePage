@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.sesame.personalhomepage.ViewModel.MainViewModel
+import com.sesame.personalhomepage.ViewModel.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,13 +13,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val model: MainViewModel by viewModels()
+        val viewModel: UserViewModel by viewModels()
 
-        model.userLiveData.observe(this, {
+        viewModel.userLiveData.observe(this, {
             Glide.with(this).load(it.avatar_url).into(ivHead)
             tvLocation.text = "location: ${it.location}"
         })
 
-        model.getData()
+        refreshLayout.setOnRefreshListener {
+            viewModel.getDataFromApi()
+            it.finishRefresh()
+        }
+
+//        viewModel.getDataFromApi()
+
     }
 }
