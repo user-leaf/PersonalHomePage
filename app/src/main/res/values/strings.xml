@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PersonalHomePage</string>
+    <string name="user_location">location: @{user.location}</string>
 </resources>
